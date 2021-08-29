@@ -1,0 +1,53 @@
+@model IEnumerable<lab_prac1.Models.producto>
+@{
+    ViewData["Title"] = "producto";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="create">Crear nuevo producto</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descuento)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.id">Editar</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.id">eliminar</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria)
+            </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descuento)%
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>
+
